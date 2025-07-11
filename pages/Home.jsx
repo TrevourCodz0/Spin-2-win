@@ -61,7 +61,7 @@ function Home() {
     }
 
     try {
-      const response = await fetch('http://localhost:5000/withdraw', {
+      const response = await fetch('https://spin2winapi.onrender.com/withdraw', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
@@ -107,7 +107,7 @@ function Home() {
     if (spinsLeft <= 0 || isSpinning) return;
     setIsSpinning(true);
     try {
-      const response = await fetch('http://localhost:5000/spin', {
+      const response = await fetch('https://spin2winapi.onrender.com/spin', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ email: user?.email }),
@@ -180,7 +180,7 @@ function Home() {
   useEffect(() => {
     const fetchUserBalance = async () => {
       if (!user?.email) return;
-      const res = await fetch(`http://localhost:5000/user?email=${user.email}`);
+      const res = await fetch(`https://spin2winapi.onrender.com/user?email=${user.email}`);
       const data = await res.json();
       if (res.ok) {
         setRewards({
