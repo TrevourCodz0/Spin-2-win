@@ -1,10 +1,14 @@
 import React, { useState } from 'react';
 import AuthForm from '../components/AuthForm';
 import { useNavigate } from 'react-router-dom';
+import { useUser } from '../src/context/UserContext'; // 👈 Import
+import '../src/index.css'
 
 const Login = () => {
+  const { setUser } = useUser(); 
   const [formData, setFormData] = useState({ email: '', password: '' });
   const navigate = useNavigate();
+
 
   const handleLogin = async (e) => {
     e.preventDefault();
@@ -18,6 +22,7 @@ const Login = () => {
       const data = await res.json();
       if (res.ok) {
         alert('✅ Login successful!');
+        setUser(data.user);
         navigate('/spin2win');
       } else {
         alert(data.error || '❌ Login failed');

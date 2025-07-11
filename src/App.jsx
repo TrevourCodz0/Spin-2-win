@@ -4,6 +4,7 @@ import Login from '../pages/Login';
 import Signup from '../pages/SignUp';
 import Home from '../pages/Home';
 import LandingPage from '../pages/LandingPage';
+import Success from '../pages/Success';
 
 function App() {
   return (
@@ -13,6 +14,7 @@ function App() {
          <Route path="/signup" element={<Signup />} />
         <Route path="/login" element={<Login />} />
         <Route path='/spin2win' element={<Home/>}/>
+        <Route path='/success' element={<Success/>}/>
       </Routes>
     </Router>
   );

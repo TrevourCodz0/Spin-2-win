@@ -1,5 +1,4 @@
 import React from 'react';
-import './Authform.css'
 
 const AuthForm = ({ type, onSubmit, formData, setFormData }) => {
   const isLogin = type === 'login';

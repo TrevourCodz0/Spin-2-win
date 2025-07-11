@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
 import AuthForm from '../components/AuthForm';
 import { useNavigate } from 'react-router-dom';
-
+import { useUser } from '../src/context/UserContext'; // 👈 import the context
+import '../src/index.css'
 const Signup = () => {
   const [formData, setFormData] = useState({ email: '', password: '', username: '' });
   const navigate = useNavigate();
+  const { setUser } = useUser(); // 👈 access setUser from context
 
   const handleSignup = async (e) => {
     e.preventDefault();
@@ -17,6 +19,7 @@ const Signup = () => {
 
       const data = await res.json();
       if (res.ok) {
+        setUser(data.user); // ✅ save user globally
         alert('✅ Account created!');
         navigate('/spin2win');
       } else {
